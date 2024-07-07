@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sober Steps - Health Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/dashboard2.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+<!-- Navigation Bar -->
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0 flex items-center">
+                <h1 class="text-2xl font-bold text-indigo-600">Sober Steps - Health Professional</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700">[Username]</span>
+                <div class="relative">
+                    <img src="profile.jpg" alt="Profile" class="h-8 w-8 rounded-full cursor-pointer" id="profileMenuButton">
+                    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20">
+                        <div class="px-4 py-2">
+                            <p class="text-gray-700 font-medium">[User's Name]</p>
+                            <p class="text-gray-500 text-sm">[User's Email]</p>
+                        </div>
+                        <div class="border-t border-gray-200"></div>
+                        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Profile</a>
+                        <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar and Main Content -->
+<div class="flex flex-grow">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-gray-200 flex flex-col fixed h-full">
+        <div class="mt-8">
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="block px-4 py-2 text-gray-200 hover:bg-gray-700 rounded">Dashboard</a>
+                <a href="surveys.html" class="block px-4 py-2 text-gray-200 hover:bg-gray-700 rounded">Surveys</a>
+                <a href="resources.html" class="block px-4 py-2 text-gray-200 hover:bg-gray-700 rounded">Educational Resources</a>
+                <a href="chats.html" class="block px-4 py-2 text-gray-200 hover:bg-gray-700 rounded relative">
+                    Chats
+                    <span class="absolute top-0 right-0 mt-2 mr-4 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">3</span>
+                </a>
+            </nav>
+        </div>
+        <div class="mt-auto mb-8">
+            <nav class="space-y-2">
+                <a href="profile.html" class="block px-4 py-2 text-gray-200 hover:bg-gray-700 rounded">My Profile</a>
+                <a href="logout.html" class="block px-4 py-2 text-gray-200 hover:bg-gray-700 rounded">Logout</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow ml-64 p-8 space-y-8">
+        <!-- Surveys Card -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Surveys</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200">
+                    <thead>
+                    <tr>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Survey Name</th>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Date Created</th>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Responses</th>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Example survey row -->
+                    <tr>
+                        <td class="px-6 py-4 border-b">Survey 1</td>
+                        <td class="px-6 py-4 border-b">2024-01-01</td>
+                        <td class="px-6 py-4 border-b">20</td>
+                        <td class="px-6 py-4 border-b">
+                            <button class="text-blue-600 hover:underline">Edit</button>
+                            <button class="text-red-600 hover:underline ml-2">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- More survey rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-center">
+                <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">Create New Survey</button>
+            </div>
+        </div>
+
+        <!-- Educational Resources Card -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Educational Resources</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200">
+                    <thead>
+                    <tr>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Resource Name</th>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Date Uploaded</th>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Actions</th>
+                        <th class="px-6 py-3 border-b text-left text-sm font-medium text-gray-700">Analytics</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Example resource row -->
+                    <tr>
+                        <td class="px-6 py-4 border-b">Resource 1</td>
+                        <td class="px-6 py-4 border-b">2024-01-01</td>
+                        <td class="px-6 py-4 border-b">
+                            <button class="text-blue-600 hover:underline">Edit</button>
+                            <button class="text-red-600 hover:underline ml-2">Delete</button>
+                        </td>
+                        <td class="px-6 py-4 border-b">
+                            <button class="text-indigo-600 hover:underline">View Analytics</button>
+                        </td>
+                    </tr>
+                    <!-- More resource rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-center">
+                <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">Create New Resource</button>
+            </div>
+        </div>
+
+        <!-- Chats Card -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Chats</h2>
+            <ul class="space-y-4">
+                <!-- Example chat row -->
+                <li class="flex items-center bg-gray-100 p-4 rounded-md">
+                    <img src="user1.jpg" alt="User" class="h-8 w-8 rounded-full">
+                    <div class="ml-4">
+                        <p class="text-sm font-bold text-gray-700">User 1</p>
+                        <p class="text-xs text-gray-500">Online</p>
+                    </div>
+                    <button class="ml-auto px-4 py-2 bg-indigo-600 text-white rounded-md">Chat</button>
+                </li>
+                <!-- More chat rows -->
+            </ul>
+        </div>
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-4 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p>&copy; 2024 Sober Steps. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

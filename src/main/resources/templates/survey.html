@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey - Sober Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/survey.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+<!-- Navigation Bar -->
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0 flex items-center">
+                <h1 class="text-xl font-bold">Sober Steps</h1>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a th:href="@{/dashboard}" class="text-gray-500 hover:text-gray-700">Skip</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Survey Container -->
+<main class="flex justify-center items-center min-h-screen">
+    <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Drinking Habits Survey</h2>
+        <form id="survey-form">
+            <!-- Survey Questions will be dynamically inserted here -->
+            <div id="question-container"></div>
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mt-6">
+                <button type="button" id="prev-btn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md shadow-sm hover:bg-gray-200" disabled>Previous</button>
+                <button type="button" id="next-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-500">Next</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p>&copy; 2024 Sober Steps. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

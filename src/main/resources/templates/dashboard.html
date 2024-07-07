@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Sober Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/dashboard2.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+<!-- Navigation Bar -->
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0 flex items-center">
+                <h1 class="text-2xl font-bold text-indigo-600">Sober Steps</h1>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="home.html" class="text-gray-500 hover:bg-indigo-100 px-3 py-2 rounded-md">Home</a>
+                <a th:href="@{/plans}" class="text-gray-500 hover:bg-indigo-100 px-3 py-2 rounded-md">Plans</a>
+                <a href="progress.html" class="text-gray-500 hover:bg-indigo-100 px-3 py-2 rounded-md">Progress</a>
+                <a href="communities.html" class="text-gray-500 hover:bg-indigo-100 px-3 py-2 rounded-md">Communities</a>
+                <a href="journal.html" class="text-gray-500 hover:bg-indigo-100 px-3 py-2 rounded-md">Journal</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700" th:text="${username}">John Doe</span>
+                <div class="relative">
+                    <img src="/img/profile.jpg" alt="Profile" class="h-8 w-8 rounded-full cursor-pointer" id="profileMenuButton">
+                    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20">
+                        <div class="px-4 py-2">
+                            <p class="text-gray-700 font-medium" th:text="${username}"></p>
+                            <p class="text-gray-500 text-sm" th:text="${email}"></p>
+                        </div>
+                        <div class="border-t border-gray-200"></div>
+                        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Profile</a>
+                        <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Communities Section -->
+    <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold text-gray-900">Communities</h2>
+        <div class="mt-4">
+            <h3 class="text-base font-normal text-gray-500">My Communities</h3>
+            <span sec:authentication="principal.authorities"></span>
+            <ul class="mt-2 space-y-2">
+                <!-- Example of user's communities -->
+                <li class="flex items-center bg-gray-100 p-2 rounded-md">
+                    <img src="/img/slide1.jpg" alt="Community" class="h-8 w-8 rounded-full">
+                    <div class="ml-2">
+                        <p class="text-sm font-bold text-gray-700">Community 1</p>
+                        <p class="text-xs text-gray-500">100 Members</p>
+                    </div>
+                </li>
+                <li class="flex items-center bg-gray-100 p-2 rounded-md">
+                    <img src="/img/slide1.jpg" alt="Community" class="h-8 w-8 rounded-full">
+                    <div class="ml-2">
+                        <p class="text-sm font-bold text-gray-700">Community 2</p>
+                        <p class="text-xs text-gray-500">20k Members</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="mt-6">
+            <h3 class="text-base font-normal text-gray-500">All Communities</h3>
+            <ul class="mt-2 space-y-2">
+                <!-- Example of all communities with join buttons -->
+                <li class="flex items-center bg-gray-100 p-2 rounded-md">
+                    <img src="/img/slide1.jpg" alt="Community" class="h-8 w-8 rounded-full">
+                    <div class="ml-2">
+                        <p class="text-sm font-bold text-gray-700">Community 3</p>
+                        <p class="text-xs text-gray-500">1.2k Members</p>
+                    </div>
+                    <div class="ml-auto mr-0">
+                        <button class="text-sm px-1 py-0.5 font-semibold bg-indigo-200 rounded text-black">Join</button>
+                    </div>
+                </li>
+                <li class="flex items-center bg-gray-100 p-2 rounded-md">
+                    <img src="/img/slide1.jpg" alt="Community" class="h-8 w-8 rounded-full">
+                    <div class="ml-2">
+                        <p class="text-sm font-bold text-gray-700">Community 4</p>
+                        <p class="text-xs text-gray-500">1.2k Members</p>
+                    </div>
+                    <div class="ml-auto mr-0">
+                        <button class="text-sm px-1 py-0.5 font-semibold bg-indigo-200 rounded text-black">Join</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- My Plan and My Progress Sections -->
+    <section class="md:col-span-2 space-y-6">
+        <!-- My Plan Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-gray-900">My Plan</h2>
+                <button class="text-sm text-indigo-600 hover:underline">Details</button>
+            </div>
+            <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Plan details cards -->
+                <div class="bg-gray-100 p-4 rounded-md">
+                    <h3 class="text-sm font-bold text-gray-700">Alcohol Free Days</h3>
+                    <p class="text-xs text-gray-500">2 per Week</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-md">
+                    <h3 class="text-sm font-bold text-gray-700">Alcohol Limit</h3>
+                    <p class="text-xs text-gray-500">No more than 2 drinks/day</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-md">
+                    <h3 class="text-sm font-bold text-gray-700">Plan Duration</h3>
+                    <p class="text-xs text-gray-500">6 Months</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-md">
+                    <h3 class="text-sm font-bold text-gray-700">Healthy Activities</h3>
+                    <p class="text-xs text-gray-500">Running, Yoga</p>
+                </div>
+                <!-- Progress bar -->
+                <div class="lg:col-span-2 mt-4">
+                    <div class="bg-gray-200 rounded-full h-4">
+                        <div class="bg-indigo-600 h-4 rounded-full" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- If no plan is available -->
+            <div class="mt-4 text-center">
+                <p class="text-gray-500">No Plan Available</p>
+                <a href="create-plan.html" class="mt-2 inline-block px-4 py-2 bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-500">Create Your Plan</a>
+            </div>
+        </div>
+        <!-- My Progress Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-gray-900">My Progress</h2>
+            <p class="text-gray-500 mt-4">No Progress to Track Yet</p>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold text-gray-900">Resources</h2>
+        <ul class="mt-4 space-y-4">
+            <!-- Example of resources -->
+            <li class="flex space-x-4 bg-gray-100 p-2 rounded-md">
+                <img src="/img/slide2.jpg" alt="Video" class="h-12 w-12">
+                <div>
+                    <p class="text-sm font-bold text-gray-700 hover:underline cursor-pointer">Video: How to Stay Sober</p>
+                    <p class="text-xs text-gray-500">Learn practical tips for maintaining sobriety...</p>
+                </div>
+            </li>
+            <li class="bg-gray-100 p-2 rounded-md">
+                <p class="text-sm font-bold text-gray-700 hover:underline cursor-pointer">Blog: Tips for Recovery</p>
+                <p class="text-xs text-gray-500">Discover effective strategies to aid your recovery journey...</p>
+            </li>
+            <li class="bg-gray-100 p-2 rounded-md">
+                <p class="text-sm font-bold text-gray-700 hover:underline cursor-pointer">Story: John's Journey</p>
+                <p class="text-xs text-gray-500">Read about John's experiences and challenges in achieving sobriety...</p>
+            </li>
+        </ul>
+    </section>
+</main>
+<div id="snackbar">Account Created Successfully</div>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-4 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p>&copy; 2024 Sober Steps. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

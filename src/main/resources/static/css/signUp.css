@@ -1,0 +1,98 @@
+.gradient-bg {
+    background: linear-gradient(135deg, #10439F, #874CCC, #C65BCF, #F27BBD);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.btn-highlight {
+    background-color: #F27BBD;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.btn-highlight:hover {
+    background-color: #C65BCF;
+}
+
+.home-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #10439F;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #874CCC;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+}
+
+.sign-up-section {
+    display: flex;
+    min-height: 80vh;
+}
+
+.sign-up-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+}
+
+.form-container {
+    max-width: 200rem;
+    width: 100%;
+    border-radius: 10px
+}
+
+.sign-up-form input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.sign-up-form button {
+    background-color: #10439F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.sign-up-form button:hover {
+    background-color: #874CCC;
+}
+
+.sign-up-image {
+    flex: 1;
+    background-image: url('/img/sideImg.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
