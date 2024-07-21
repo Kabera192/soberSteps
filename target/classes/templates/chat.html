@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Community Chat - Sober Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/chat.js"></script>
+    <style>
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900">Support Community</h1>
+    </div>
+</header>
+<main class="flex-grow max-w-7xl w-full mx-auto py-6 sm:px-6 lg:px-8 flex">
+    <span id="username" th:text="${loggedInUser.username}" class="hidden"></span>
+    <div class="w-1/4 bg-white p-4 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Users</h2>
+        <ul>
+            <li th:each="user : ${users}" class="cursor-pointer" th:onclick="openChat('user', [[${user.id}]])">
+                <span th:text="${user.username}" class="block text-gray-700 p-2 rounded hover:bg-gray-200"></span>
+            </li>
+        </ul>
+        <h2 class="text-xl font-semibold text-gray-900 mb-4 mt-6">Communities</h2>
+        <ul>
+            <li th:each="community : ${communities}" class="cursor-pointer" th:onclick="openChat('community', [[${community.id}]])">
+                <span th:text="${community.name}" class="block text-gray-700 p-2 rounded hover:bg-gray-200"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="w-3/4 bg-white p-4 rounded-lg shadow-md flex flex-col">
+        <div id="chat" class="flex-grow overflow-y-auto mb-4">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        <form id="messageForm" class="flex hidden">
+            <input type="text" id="messageInput" placeholder="Type a message..." class="flex-grow p-2 border border-gray-300 rounded-l-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-r-md">Send</button>
+        </form>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</body>
+</html>

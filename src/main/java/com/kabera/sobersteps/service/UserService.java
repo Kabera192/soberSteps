@@ -7,11 +7,13 @@ import com.kabera.sobersteps.model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public interface UserService extends UserDetailsService {
     public User findByUsername(String username);
-    public boolean registerUser(RegisterUserDto userDto, RoleName roleName);
+    public User registerUser(RegisterUserDto userDto, RoleName roleName);
     public String getUsername();
     public UserProfileDto getUserProfile();
-    public boolean findUserByEmail(String email);
+    public Optional<User> findUserByEmail(String email);
 }

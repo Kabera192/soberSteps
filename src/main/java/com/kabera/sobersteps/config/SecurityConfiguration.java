@@ -37,13 +37,21 @@ public class SecurityConfiguration {
                                         .requestMatchers(HttpMethod.POST,"/create-account/**").permitAll()
                                         .requestMatchers(HttpMethod.GET, "/sober-steps/login").permitAll()
                                         .requestMatchers(HttpMethod.GET, "/").permitAll()
+                                        .requestMatchers(HttpMethod.GET, "/survey").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/submit-survey").permitAll()
+                                        .requestMatchers(HttpMethod.GET, "/survey-intro").permitAll()
+                                        .requestMatchers(HttpMethod.GET, "/standard-drinks").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/saveStandardDrinkData").permitAll()
+                                        .requestMatchers("/generate-plan").permitAll()
                                         .requestMatchers("/img/**").permitAll()
                                         .requestMatchers("/js/**").permitAll()
                                         .requestMatchers("/css/**").permitAll()
                                         .requestMatchers("/hp/**").hasRole("HP")
                                         .requestMatchers("/moh/**").hasRole("MOH")
+                                        .requestMatchers("/create-survey/**").hasRole("HP")
+                                        .requestMatchers("/create-survey/**").hasRole("MOH")
                                         .anyRequest().authenticated()
-//                        .anyRequest().permitAll()
+//                       .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
                         formLogin
@@ -54,6 +62,7 @@ public class SecurityConfiguration {
                 )
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/")
                         .permitAll()
                 );
 

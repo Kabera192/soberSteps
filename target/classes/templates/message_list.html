@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Community Chat - Sober Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+    <body>
+        <div th:if="${messages.empty}" class="text-sm text-gray-400 m-auto">This is the start of this conversation</div>
+        <!-- message_list.html -->
+        <div th:each="message : ${messages}">
+            <p class="text-gray-700 p-2 rounded-lg shadow-md inline-block bg-gray-200 mb-2" th:text="${message.sender.username + ': ' + message.content}"></p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    </body>
+</html>

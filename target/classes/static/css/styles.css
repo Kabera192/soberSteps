@@ -1,0 +1,100 @@
+.gradient-bg {
+    background: linear-gradient(135deg, #10439F, #874CCC, #C65BCF, #F27BBD);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.btn-highlight {
+    background-color: #F27BBD;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.btn-highlight:hover {
+    background-color: #C65BCF;
+}
+
+.home-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #fff;
+}
+
+.background-img {
+    background-image: url('/img/charles-etoroma.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Animation for gradient background */
+@keyframes gradient-xy {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-xy {
+    background-size: 200% 200%;
+    animation: gradient-xy 15s ease infinite;
+}
+
+/* Testimonial styles */
+.testimonial-slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.testimonial-card {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}

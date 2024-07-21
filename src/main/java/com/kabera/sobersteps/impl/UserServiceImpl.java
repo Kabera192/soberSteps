@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean registerUser(RegisterUserDto userDto, RoleName roleName) {
+    public User registerUser(RegisterUserDto userDto, RoleName roleName) {
         Role userRole = roleDao.findByName(roleName);
         if(userRole == null) throw new RuntimeException("Role not found!");
 
@@ -51,8 +51,7 @@ public class UserServiceImpl implements UserService {
                         .dateOfBirth(userDto.getDateOfBirth())
                         .roles(roles)
                         .build();
-        userDao.save(user);
-        return true;
+        return userDao.save(user);
     }
 
     @Override
@@ -75,8 +74,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean findUserByEmail(String email) {
-        return userDao.findByEmail(email).isPresent();
+    public Optional<User> findUserByEmail(String email) {
+        return userDao.findByEmail(email);
     }
 
     @Override

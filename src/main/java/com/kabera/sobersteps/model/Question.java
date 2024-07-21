@@ -17,7 +17,13 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String questionText;
+
     @OneToMany(mappedBy = "surveyQuestion", cascade = CascadeType.ALL)
-    private List<Responses> responsesList = new ArrayList<>();
+    private List<Answers> answers = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "survey_id")
+    private Survey survey;
 }

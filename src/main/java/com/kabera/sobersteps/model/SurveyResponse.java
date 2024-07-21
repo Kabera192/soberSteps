@@ -17,13 +17,16 @@ public class SurveyResponse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
-    @ManyToMany
-    @JoinTable(name = "tbl_surveyresponses_questions")
-    private List<Question> surveyQuestions = new ArrayList<>();
-    @ManyToMany
-    @JoinTable(name = "tbl_surveyresponses_responses")
-    private List<Responses> responses = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tbl_survey_user_responses")
+    private List<Answers> answers = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "survey_id")
+    private Survey survey;
 }

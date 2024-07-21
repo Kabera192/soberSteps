@@ -2,6 +2,7 @@ package com.kabera.sobersteps.controller;
 
 import com.kabera.sobersteps.dto.RegisterUserDto;
 import com.kabera.sobersteps.model.RoleName;
+import com.kabera.sobersteps.model.User;
 import com.kabera.sobersteps.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -9,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes("user")
 public class AuthController {
 
     private final UserService userService;
@@ -24,7 +27,7 @@ public class AuthController {
             Model model) {
 
         // Here we are checking if the user already exists in the system
-        if(userService.findUserByEmail(registerUserDto.getEmail())){
+        if(userService.findUserByEmail(registerUserDto.getEmail()).isPresent()){
             bindingResult.rejectValue("email", null,
                     "Account already exists.");
         }
@@ -34,10 +37,10 @@ public class AuthController {
             return "signUp";
         }
 
-        userService.registerUser(registerUserDto, RoleName.ROLE_QU);
+        User user = userService.registerUser(registerUserDto, RoleName.ROLE_QU);
+        model.addAttribute("user", user);
 
-
-        return "redirect:/login?success";
+        return "redirect:/survey-intro";
     }
 
     @PostMapping("/create-account/hp")
@@ -49,7 +52,7 @@ public class AuthController {
 
 
         // Here we are checking if the user already exists in the system
-        if(userService.findUserByEmail(registerUserDto.getEmail())){
+        if(userService.findUserByEmail(registerUserDto.getEmail()).isPresent()){
             bindingResult.rejectValue("email", null,
                     "Account already exists.");
         }
@@ -72,7 +75,7 @@ public class AuthController {
             Model model) {
 
         // Here we are checking if the user already exists in the system
-        if(userService.findUserByEmail(registerUserDto.getEmail())){
+        if(userService.findUserByEmail(registerUserDto.getEmail()).isPresent()){
             bindingResult.rejectValue("email", null,
                     "Account already exists.");
         }

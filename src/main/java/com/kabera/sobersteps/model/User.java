@@ -15,15 +15,22 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String username;
+
     private String email;
+
     private String password;
+
     private String gender;
+
     private LocalDate dateOfBirth;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
@@ -31,8 +38,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
-    @OneToOne(mappedBy = "user")
-    private SurveyResponse surveyResponse;
-    @OneToMany(mappedBy = "user")
-    private List<JournalEntry> journalEntries = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "community_users",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "community_id")
+    )
+    private List<Community> communities = new ArrayList<>();
 }

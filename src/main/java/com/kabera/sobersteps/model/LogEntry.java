@@ -16,8 +16,13 @@ public class LogEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate entryDate;
-    private String logContent;
+
+    private String activity;
+
+    private String description;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

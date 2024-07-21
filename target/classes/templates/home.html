@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sober Steps</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+<nav class="w-full flex justify-between items-center p-4">
+  <div class="text-2xl font-bold">Sober Steps</div>
+  <div class="flex space-x-4">
+    <a href="/" class="text-black mx-2 font-light">Home</a>
+    <a href="#features" class="text-black mx-2 font-light">Features</a>
+    <a href="#testimonials" class="text-black mx-2 font-light">Testimonials</a>
+  </div>
+  <div>
+    <a th:href="@{/create-account}" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg">Start Today</a>
+    <a th:href="@{/sober-steps/login}" class="text-black border border-indigo-600 rounded-lg px-4 py-2 mx-4">Login</a>
+  </div>
+</nav>
+
+<header class="bg-cover bg-center h-screen">
+  <div class="flex items-center justify-center h-full bg-gray-900 bg-opacity-50">
+    <div class="text-center text-white">
+      <h2 class="text-4xl md:text-6xl font-bold">Start Your Journey to Sobriety</h2>
+      <p class="mt-4 text-lg md:text-xl">Fearlessly take your first step towards a journey of redemption.</p>
+      <a href="#" class="mt-8 inline-block px-8 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-500">Get Started</a>
+    </div>
+  </div>
+</header>
+
+<!-- Features Section -->
+<section id="features" class="container mx-auto p-8">
+  <h2 class="text-2xl font-bold text-center mb-6">Features</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+      <img src="/img/plan.png" alt="Feature 1" class="w-16 h-16 mx-auto mb-4">
+      <h3 class="font-semibold mb-2">Personalized Plans</h3>
+      <p class="text-gray-700">Get a plan that is customized to your unique situation</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+      <img src="/img/community.png" alt="Feature 2" class="w-16 h-16 mx-auto mb-4">
+      <h3 class="font-semibold mb-2">Community Support</h3>
+      <p class="text-gray-700">Surround yourself with a community of like-minded people to walk with.</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+      <img src="/img/progress.png" alt="Feature 3" class="w-16 h-16 mx-auto mb-4">
+      <h3 class="font-semibold mb-2">Track Progress</h3>
+      <p class="text-gray-700">Keep yourself accountable and see your growth along the way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials py-20 bg-white">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-12">What Our Users Say</h2>
+    <div class="testimonial-carousel">
+      <div class="testimonial-item">
+        <p>"Sober Steps has changed my life. The community is amazing and the resources are invaluable."</p>
+        <span class="block mt-4 text-gray-700">- User 1 -</span>
+      </div>
+      <div class="testimonial-item">
+        <p>"I never thought I could quit drinking, but Sober Steps made it possible."</p>
+        <span class="block mt-4 text-gray-700">- User 2 -</span>
+      </div>
+      <!-- Add more testimonials here -->
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-12 bg-indigo-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h3 class="text-2xl font-bold">Ready to Take the First Step?</h3>
+      <a href="#" class="mt-8 inline-block px-8 py-3 bg-white text-indigo-600 rounded-md hover:bg-gray-200">Join Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p>&copy; 2024 Sober Steps. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

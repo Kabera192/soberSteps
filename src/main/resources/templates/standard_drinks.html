@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Drinks - Sober Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/standard_drinks.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900">Standard Drinks Calculator</h1>
+    </div>
+</header>
+<main class="flex-grow max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">What is a Standard Drink?</h2>
+            <p class="text-gray-700">A standard drink is a measure of alcohol consumption representing a hypothetical beverage that contains a fixed amount of pure alcohol. It is a good measure of how much one drinks and helps to compare different types of alcoholic beverages.</p>
+        </section>
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Calculate a Standard Drink</h2>
+            <p class="text-gray-700">To calculate the number of standard drinks in a beverage, use the formula:</p>
+            <p class="text-gray-700 font-mono">Volume of Beverage (in Liters) * Percentage of Alcohol in Beverage * 0.789</p>
+            <p class="text-gray-700">For example, a 0.3l beer with 5% alcohol has 1.2 standard drinks in it.</p>
+        </section>
+        <section>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Calculate Your Standard Drinks</h2>
+            <form id="standardDrinkForm" class="space-y-4">
+                <div>
+                    <label for="volume" class="block text-sm font-medium text-gray-700">Volume of Beverage</label>
+                    <div class="flex">
+                        <input type="number" id="volume" name="volume" class="flex-grow p-2 border border-gray-300 rounded-l-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                        <select id="volumeUnit" name="volumeUnit" class="p-2 border border-gray-300 rounded-r-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                            <option value="ml">ml</option>
+                            <option value="cl">cl</option>
+                            <option value="l">l</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="percentage" class="block text-sm font-medium text-gray-700">Percentage of Alcohol</label>
+                    <input type="number" step="0.1" id="percentage" name="percentage" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                <button type="button" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-md" onclick="calculateStandardDrinks()">Calculate Standard Drinks</button>
+            </form>
+            <div id="standardDrinkResult" class="mt-4 hidden">
+                <p class="text-gray-700 font-bold">Number of Standard Drinks: <span id="standardDrinkValue"></span></p>
+            </div>
+        </section>
+        <section id="consumptionFormSection" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Consumption</h2>
+            <form id="consumptionForm" th:action="@{/saveStandardDrinkData}" method="post" class="space-y-4">
+                <input type="hidden" id="standardDrinkPerBottle" th:name="standardDrinkPerBottle">
+                <div>
+                    <label for="dailyBottles" class="block text-sm font-medium text-gray-700">Bottles per Day</label>
+                    <input type="number" id="dailyBottles" th:name="dailyBottles" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                <div>
+                    <label for="weeklyBottles" class="block text-sm font-medium text-gray-700">Bottles per Week</label>
+                    <input type="number" id="weeklyBottles" th:name="weeklyBottles" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                <div>
+                    <label for="monthlyBottles" class="block text-sm font-medium text-gray-700">Bottles per Month</label>
+                    <input type="number" id="monthlyBottles" th:name="monthlyBottles" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-md">Calculate</button>
+            </form>
+        </section>
+    </div>
+</main>
+</body>
+</html>

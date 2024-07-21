@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Survey - Sober Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script th:src="@{/js/create-survey.js}"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl w-full mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Create Survey</h2>
+        <form th:action="@{/create-survey}" th:object="${surveyDto}" method="post">
+            <div class="mb-4">
+                <label for="surveyName" class="block text-sm font-medium text-gray-700">Survey Name</label>
+                <input type="text" id="surveyName" th:field="*{surveyName}" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div id="questions-container" th:field="*{questions}" class="space-y-6">
+                <!-- Questions will be dynamically added here -->
+                <div th:each="question, iterStat : *{questions}">
+                    <div class="mb-4">
+                        <label th:for="${'question' + iterStat.index}" class="block text-sm font-medium text-gray-700">Question</label>
+                        <input type="text" th:field="*{questions[__${iterStat.index}__].text}" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div th:each="answer, ansStat : *{questions[__${iterStat.index}__].answers}">
+                        <div class="mb-4">
+                            <label th:for="${'answer' + iterStat.index + '_' + ansStat.index}" class="block text-sm font-medium text-gray-700">Answer</label>
+                            <input type="text" th:field="*{questions[__${iterStat.index}__].answers[__${ansStat.index}__].text}" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div class="mb-4">
+                            <label th:for="${'weight' + iterStat.index + '_' + ansStat.index}" class="block text-sm font-medium text-gray-700">Weight</label>
+                            <input type="number" th:field="*{questions[__${iterStat.index}__].answers[__${ansStat.index}__].weight}" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <button type="button" id="add-question-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Add Question</button>
+            </div>
+            <div class="mt-6 text-center">
+                <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md">Create Survey</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-4 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p>&copy; 2024 Sober Steps. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
